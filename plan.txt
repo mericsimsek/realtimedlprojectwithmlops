@@ -28,3 +28,20 @@ AWS SageMaker veya benzeri bir servisi teorik olarak araştır. FastAPI uygulama
 
 
 1. adım:
+iskeletin görünümü :
+/sign_language_translator
+|-- .git/
+|-- .github/                # GitHub Actions (CI/CD) için
+|   `-- workflows/
+|-- data/                   # Veri setleri burada olacak (DVC ile izlenecek)
+|-- notebooks/              # Keşif amaçlı Jupyter notebook'lar
+|-- scripts/                # Eğitim, veri işleme script'leri
+|-- src/                    # Ana Python kaynak kodu (API, model tanımı vb.)
+|-- tests/                  # Pytest testleri için
+|-- .gitignore
+|-- dvc.yaml                # DVC pipeline tanımı için
+|-- Dockerfile              # Faz 2 için
+|-- README.md
+`-- requirements.txt        # Gerekli kütüphaneler
+
+2.adım:
