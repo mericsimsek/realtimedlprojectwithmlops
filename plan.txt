@@ -1,0 +1,30 @@
+Proje Fikri: Seni Zorlayacak Yaratıcı Bir Derin Öğrenme Projesi
+MLOps prensiplerini uygulamak için biçilmiş kaftan bir proje: "Webcam ile Gerçek Zamanlı İşaret Dili Çevirmeni".
+
+Zorluk: Gerçek zamanlı video işleme, karmaşık bir derin öğrenme modeli (örneğin, CNN + LSTM veya Transformer tabanlı bir model) gerektirir. Veri toplama ve etiketleme kendi başına bir projedir.
+MLOps Uygulamaları:
+DVC: Video verisetlerini ve model ağırlıklarını versiyonlamak için mükemmel.
+MLflow: Farklı model mimarilerini ve eğitim parametrelerini takip etmek için hayati.
+Docker: OpenCV, TensorFlow/PyTorch gibi bağımlılıkları olan bu karmaşık ortamı paketlemek için ideal.
+CI/CD: Her yeni model versiyonunda, temel bir doğruluk (accuracy) testini otomatik çalıştıran bir pipeline kurabilirsin.
+Deployment (Simülasyon): Modeli alıp, bir FastAPI sunucusu ile bir API'ye dönüştüren bir script yaz. Docker ile bunu paketle. AWS'e deploy edemesen bile, bu API'yi yerel makinede çalıştırabilirsin.
+Adım Adım Proje Odaklı Yol Haritası
+Faz 1: Temeller ve Yerel Geliştirme (1-2 Hafta)
+Projeyi başlat, Git repo'su oluştur ve GitHub'a push'la.
+Küçük bir işaret dili resim veriseti bul veya oluştur. Bu verisetini DVC ile versiyonla.
+Basit bir CNN modeli eğit. Eğitim script'ini yazarken MLflow entegrasyonu yap: parametreleri, metrikleri ve eğitilmiş modeli logla.
+Faz 2: Paketleme ve Otomasyon (2-3 Hafta)
+Projen için bir Dockerfile yaz. Gerekli tüm kütüphaneleri (OpenCV, TensorFlow vb.) içersin. İmajı build etmeyi dene, olmazsa bile dosyan hazır olsun.
+GitHub Actions ile basit bir CI (Continuous Integration) pipeline'ı kur. Bu pipeline, her push'ta kodunu `flake8` gibi bir linter ile kontrol etsin ve `pytest` ile yazdığın birkaç basit testi çalıştırsın.
+Faz 3: Veri Akışı ve Düzenleme (Orchestration) (3-4 Hafta)
+Veri ön işleme ve model eğitimi adımlarını otomatikleştirmek için bir Apache Airflow DAG'ı yaz. Bu DAG'ı yerelinde (Astro CLI ile çok kolay) çalıştırarak pipeline'ını test et.
+Bu, "yeni veri geldiğinde, veriyi işle, modeli eğit, sonuçları kaydet" akışını simüle eder.
+Faz 4: Model Dağıtımı ve İzleme (Deployment & Monitoring) (4-5 Hafta)
+Eğittiğin en iyi modeli MLflow'dan alıp bir FastAPI uygulamasıyla servis eden bir Python script'i yaz. Bu API, bir video karesi alıp harf tahminini döndürsün.
+Bu FastAPI uygulamasını Docker konteynerin içinde çalışacak şekilde ayarla.
+AWS SageMaker veya benzeri bir servisi teorik olarak araştır. FastAPI uygulamanı SageMaker'a nasıl deploy edeceğini anlatan bir `README.md` dosyası yaz. Bu bile çok değerli bir adımdır.
+(İleri Seviye) Basit bir arayüz yap ve modelin tahminlerini bir PostgreSQL veritabanına kaydet. Bu veritabanını Grafana'ya bağlayarak "en çok tahmin edilen harfler" gibi basit bir dashboard oluştur.
+
+
+
+1. adım:
