@@ -1,0 +1,16 @@
+/sign_mnist_train.csv
+/sign_mnist_test.csv
+# Zaten .dockerignore'da olanları buraya da eklemek iyi bir pratiktir
+venv/
+__pycache__/
+*.pyc
+
+# MLflow logları
+mlruns/
+
+# Notebook checkpoint'leri
+.ipynb_checkpoints/
+
+# Üretilen imajlar
+*.png
+*.jpg

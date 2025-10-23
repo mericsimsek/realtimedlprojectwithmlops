@@ -45,3 +45,22 @@ iskeletin görünümü :
 `-- requirements.txt        # Gerekli kütüphaneler
 
 2.adım:
+
+
+dvc add data/sign_mnist  yapıldı
+
+git add data/sign_mnist.dvc .gitignore
+git commit -m "Add initial dataset with DVC"
+dvc push -r myremote # Veriyi Google Drive'a yükler
+git push             # Meta-veriyi GitHub'a yükler     it was not made 
+
+
+the requ. file was not runned right now
+
+
+3:
+i made to create new ai system with MLFlow in MLOPS , but you dont think that it is done 
+you must still have to try skimming(gözden geçirme) again for remember
+
+
+4:you will look packaging so it is Docker tomorrow

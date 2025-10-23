@@ -1,0 +1,17 @@
+# Sanal ortamı kopyalama (en önemlisi)
+venv/
+
+# Python cache dosyaları
+__pycache__/
+*.pyc
+
+# Git ve DVC meta-verileri
+.git/
+.dvc/
+
+# MLflow'un yerel kayıtları (bunlar dışarıda kalmalı)
+mlruns/
+
+# Diğer
+.vscode/
+*.ipynb

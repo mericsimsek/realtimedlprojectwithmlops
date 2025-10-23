@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Users/meric/Desktop/project2withmlops/mlruns/714618654942445580/d1ac8b45056742f6bdaa94826a7a1700/artifacts
+end_time: 1761064493237
+entry_point_name: ''
+experiment_id: '714618654942445580'
+lifecycle_stage: active
+run_id: d1ac8b45056742f6bdaa94826a7a1700
+run_name: capable-snake-748
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761064308610
+status: 3
+tags: []
+user_id: meric
