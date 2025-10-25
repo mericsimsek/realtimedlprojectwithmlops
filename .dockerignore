@@ -1,17 +1,15 @@
-# Sanal ortamı kopyalama (en önemlisi)
+# Sanal ortamı asla kopyalama
 venv/
 
-# Python cache dosyaları
+# Python cache
 __pycache__/
 *.pyc
 
-# Git ve DVC meta-verileri
+# Git klasörünü kopyalama
 .git/
-.dvc/
 
-# MLflow'un yerel kayıtları (bunlar dışarıda kalmalı)
+# MLflow'un yerel loglarını kopyalama
 mlruns/
 
-# Diğer
-.vscode/
+# Notebook'lar (isteğe bağlı)
 *.ipynb

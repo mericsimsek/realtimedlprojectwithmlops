@@ -1,1 +1,17 @@
-venv
+# Python sanal ortamı
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# MLflow'un yerel logları (ASLA GİT'E GÖNDERİLMEZ)
+mlruns/
+
+# Eğitim sırasında üretilen grafikler (ASLA GİT'E GÖNDERİLMEZ)
+*.png
+*.jpg
+
+# Diğer
+.ipynb_checkpoints/
+requirements_all_local.txt
