@@ -1,0 +1,51 @@
+# Robotun görevinin adı
+name: Model Training Workflow
+
+# 1. TETİKLEYİCİ (Trigger): Bu robot ne zaman çalışsın?
+on:
+  push:
+    branches:
+      - main  # Sadece 'main' dalına (branch) bir kod gönderildiğinde
+
+# 2. GÖREVLER (Jobs): Robot ne yapsın?
+jobs:
+  build-and-train: # Görevin adı (istediğin bir şey olabilir)
+    
+    # 3. ORTAM (Environment): Robot hangi sunucuda çalışsın?
+    runs-on: ubuntu-latest # Standart bir Linux sunucu
+
+    # 4. ADIMLAR (Steps): Sırayla hangi komutları çalıştırsın?
+    steps:
+      
+      # Adım A: Kodu (Git deposunu) sunucuya indir
+      - name: Checkout repository
+        uses: actions/checkout@v4 # DagsHub/GitHub'ın hazır "kodu indir" eylemi
+
+      # Adım B: Robotun sunucusuna Docker'ı kur
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3 # Hazır "Docker kur" eylemi
+      
+      # Adım C: Modeli Build Et ve Eğit (Bizim komutlarımız)
+      - name: Build and Run Docker Image
+        
+        # 'env:' bölümü, komut satırına bir "environment variable" ekler
+        env:
+          # ${{ secrets.DAGSHUB_TOKEN }} -> DagsHub'daki 'Settings > Secrets' 
+          # bölümünden 'DAGSHUB_TOKEN' adındaki gizli anahtarı çeker.
+          DAGSHUB_TOKEN_SECRET: ${{ secrets.DAGSHUB_TOKEN }}
+        
+        # 'run:' bölümü, robotun çalıştıracağı terminal komutlarıdır
+        run: |
+          echo "CI/CD: Docker build işlemi başlıyor..."
+          
+          # Bizim yerel makinede yazdığımız 'docker build' komutunun aynısı
+          # Sadece token'ı bu sefer gizli bir değişkenden alıyor ($DAGSHUB_TOKEN_SECRET)
+          docker build --build-arg DAGSHUB_TOKEN="$DAGSHUB_TOKEN_SECRET" -t sign-language-model .
+          
+          echo "CI/CD: Build tamamlandı. Docker run işlemi başlıyor..."
+          
+          # Bizim yerel makinede yazdığımız 'docker run' komutunun aynısı
+          # Artık '-v mlruns' yok, çünkü loglar DagsHub'a gidiyor!
+          docker run sign-language-model
+          
+          echo "CI/CD: Eğitim tamamlandı. Loglar DagsHub MLflow'a gönderildi."
